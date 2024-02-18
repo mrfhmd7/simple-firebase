@@ -35,16 +35,21 @@ const Login = () => {
 
      return (
           <div>
-               <button onClick={handleGoogleSignIn}>Google Login</button>
+               {/* user ? logout : login */}
                {
-                    user && 
+                    user ?
+                         <button onClick={handleSingOut}>Sing Out</button>
+                         :
+                         <button onClick={handleGoogleSignIn}>Google Login</button>
+               }
+               {
+                    user &&
                     <div>
-                              <h2>User: {user.displayName}</h2>
-                              <p>Email: {user.email}</p>
-                              <img src={user.photoURL} alt="" />
+                         <h2>User: {user.displayName}</h2>
+                         <p>Email: {user.email}</p>
+                         <img src={user.photoURL} alt="" />
                     </div>
                }
-               <button onClick={handleSingOut}>Sing Out</button>
           </div>
      );
 };
