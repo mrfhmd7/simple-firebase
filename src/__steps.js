@@ -9,4 +9,7 @@
  * 8. export app from the firebase.config.js file: export default app
  * 9. Login.jsx: import getAuth from firebase/auth
  * 10. create const auth = getAuth(app)
+ * 11. import googleAuthProvider and cerate a new provider
+ * 12. use singInWithPopUp and pass auth and provider
+ * 13. activate sing-in method (google, facebook, twitter, github etc.)
  */
