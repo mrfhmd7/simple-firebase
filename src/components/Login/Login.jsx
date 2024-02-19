@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "firebase/auth";
 import app from '../../firebase/firebase.init';
 
 
@@ -8,14 +8,15 @@ const Login = () => {
      const [user, setUser] = useState(null);
 
      const auth = getAuth(app);
-     const provider = new GoogleAuthProvider();
+     const googleProvider = new GoogleAuthProvider();
+     const githubProvider = new GithubAuthProvider();
 
      const handleGoogleSignIn = () => {
-          signInWithPopup(auth, provider)
+          signInWithPopup(auth, googleProvider)
                .then(result => {
-                    const loggedUser = result.user;
-                    console.log(loggedUser);
-                    setUser(loggedUser);
+                    const loggedInUser = result.user;
+                    console.log(loggedInUser);
+                    setUser(loggedInUser);
                })
                .catch(error => {
                     console.log('error', error.message);
@@ -33,6 +34,18 @@ const Login = () => {
                })
      };
 
+     const handleGithubSignIn = () => {
+          signInWithPopup(auth, githubProvider)
+               .then(result => {
+                    const loggedInUser = result.user;
+                    console.log(loggedInUser);
+                    setUser(loggedInUser);
+               })
+               .catch(error => {
+                    console.log('error: ', error);
+               });
+     };
+
      return (
           <div>
                {/* user ? logout : login */}
@@ -40,7 +53,10 @@ const Login = () => {
                     user ?
                          <button onClick={handleSingOut}>Sing Out</button>
                          :
-                         <button onClick={handleGoogleSignIn}>Google Login</button>
+                         <>
+                              <button onClick={handleGoogleSignIn}>Google Login</button>
+                              <button onClick={handleGithubSignIn}>Github Login</button>
+                         </>
                }
                {
                     user &&

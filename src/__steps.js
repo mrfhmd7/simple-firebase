@@ -12,4 +12,10 @@
  * 11. import googleAuthProvider and cerate a new provider
  * 12. use singInWithPopUp and pass auth and provider
  * 13. activate sing-in method (google, facebook, twitter, github etc.)
+ * 
+ *             --------------------
+ *              More Auth Provider
+ *             --------------------
+ * 
+ * 1. activate the auth provider (create app, provide redirect url, client id, client secret)
  */
